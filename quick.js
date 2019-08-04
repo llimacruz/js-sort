@@ -1,11 +1,11 @@
-console.log('quick sort')
+const makeArray = require('./makeArray.js');
 
 const quickSort = (list, init, final) => {
   let i = init
   let j = final
   let pivot = list[parseInt((i + j) / 2)]
 
-  console.log('pivot', pivot)
+  //console.log('pivot', pivot)
   
   while (i < j) {
     while (list[i] < pivot) {
@@ -15,7 +15,7 @@ const quickSort = (list, init, final) => {
       j--
     }
     if (i < j) {
-      console.log('trocando', list[i], list[j])
+      //console.log('trocando', list[i], list[j])
       changes++
       const aux = list[i]
       list[i] = list[j]
@@ -37,21 +37,15 @@ const quickSort = (list, init, final) => {
   }
 }
 
-const makeList = n => {
-  const list = []
-  for (let i = 0; i < n; i++) {
-    list.push(parseInt(Math.random() * 10000))
-  }
-  return list
-}
-
-let list = makeList(1000)
-console.log(list)
+const list = makeArray(100000);
   
 let i = 0
 let j = list.length - 1
 let changes = 0
 
+const startTime = new Date();
 quickSort(list, i, j)
+const finalTime = new Date();
+console.log(finalTime - startTime)
 //console.log(list)
-console.log('changes: ', changes)
+//console.log('changes: ', changes)
